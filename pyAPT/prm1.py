@@ -23,7 +23,10 @@ class PRM1(Controller):
     # to move 1 deg: 274/25 rounds = 274/25 * 34304 encoder steps
     # measured value: 1919.2689
     # There is an offset off 88.2deg -> enc(0) = 88.2deg
-    enccnt = 1919.2698
+    # enccnt = 1919.2698
+
+    # from manual and reverse engineering of the APT messages
+    enccnt = 1919.64
 
     T = 2048/6e6
 
@@ -32,5 +35,6 @@ class PRM1(Controller):
     self.velocity_scale = enccnt * T * 65536
     self.acceleration_scale = enccnt * T * T * 65536
 
-    self.linear_range = (-180,180)
+    #self.linear_range = (-180,180)
+    self.linear_range = (-float('Inf'),float('Inf'))
 
